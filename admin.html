@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grupinho — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="shell wide">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark">GRP</span>
+        <span class="brand-name">Painel Admin</span>
+      </div>
+      <a class="nav-link" href="index.html">ver como cliente →</a>
+    </div>
+
+    <div id="login-view" class="card" style="max-width:400px;">
+      <div class="card-head">
+        <div class="card-eyebrow">Acesso restrito</div>
+        <h1 class="card-title">Entrar</h1>
+      </div>
+      <div class="field" style="margin-top:16px;">
+        <label for="email-input">E-mail</label>
+        <input id="email-input" type="email" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="senha-admin-input">Senha</label>
+        <input id="senha-admin-input" type="password" autocomplete="current-password" />
+      </div>
+      <div class="card-actions">
+        <button class="btn" id="btn-login">Entrar</button>
+        <p id="login-erro" class="note alert" style="display:none; margin:0;"></p>
+      </div>
+    </div>
+
+    <div id="painel-view" style="display:none;">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-eyebrow">Novo cadastro</div>
+          <h1 class="card-title">Adicionar cliente</h1>
+        </div>
+        <div class="field" style="margin-top:16px;">
+          <label for="novo-nome">Nome do cliente</label>
+          <input id="novo-nome" type="text" placeholder="ex: Jairo Souza" />
+        </div>
+        <div class="field">
+          <label for="novo-telefone">Celular (com DDD)</label>
+          <input id="novo-telefone" type="tel" placeholder="(21) 99999-9999" />
+        </div>
+        <div class="field">
+          <label for="novo-senha">Senha de acesso do cliente</label>
+          <input id="novo-senha" type="text" placeholder="mín. 6 caracteres" />
+          <div class="field-hint">O cliente vai usar celular + essa senha para ver o próprio cartão.</div>
+        </div>
+        <div class="card-actions">
+          <button class="btn" id="btn-add-cliente">Cadastrar cliente</button>
+          <p id="cadastro-erro" class="note alert" style="display:none; margin:0;"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <div class="card-eyebrow">Clientes ativos</div>
+            <h1 class="card-title">Grupos</h1>
+          </div>
+          <button class="btn ghost auto small" id="btn-logout">Sair</button>
+        </div>
+        <div id="lista-clientes" style="padding-top:8px;">
+          <div class="empty-state">Carregando...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/app-admin.js"></script>
+</body>
+</html>

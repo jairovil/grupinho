@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grupinho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- TELA DE LOGIN -->
+    <div id="login-view">
+      <div class="topbar">
+        <div class="brand">
+          <span class="brand-mark">GRP</span>
+          <span class="brand-name">Grupinho</span>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin: 30px 0 26px;">
+        <div style="font-family:var(--f-display); font-size:26px; font-weight:700; line-height:1.2;">
+          Seu grupo,<br /><span style="color:var(--mint);">seu benefício!</span>
+        </div>
+        <p style="color:var(--text-dim); font-size:14px; margin-top:10px;">
+          Mantenha 5 amigos ativos e seu acesso é grátis.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="field" style="margin-top:20px;">
+          <label for="telefone-input">Celular</label>
+          <input id="telefone-input" type="tel" placeholder="(21) 99999-9999" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="senha-input">Senha</label>
+          <input id="senha-input" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <div class="card-actions">
+          <button class="btn" id="btn-entrar">Entrar</button>
+          <p id="login-erro" class="note alert" style="display:none; margin:0;"></p>
+        </div>
+      </div>
+
+      <p class="footer-note">Não tem uma conta? Peça o cadastro a quem te indicou o programa.</p>
+    </div>
+
+    <!-- TELA DO CARTÃO -->
+    <div id="home-view" style="display:none;">
+      <div class="topbar">
+        <div class="brand">
+          <span class="brand-mark">GRP</span>
+          <span class="brand-name">Grupinho</span>
+        </div>
+        <a class="nav-link" href="admin.html">admin →</a>
+      </div>
+
+      <div class="hello" id="saudacao">Olá! 👋</div>
+
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:12px;">
+          <div class="ring-row">
+            <div>
+              <div class="card-eyebrow">Amigos ativos</div>
+              <div class="ring-num" id="ring-num">0 <small>/ 5</small></div>
+              <div class="ring-meta" id="ring-meta">Meta: 5 amigos</div>
+            </div>
+            <div id="ring-svg-holder"></div>
+          </div>
+        </div>
+        <div class="status-block" id="status-block">
+          <div class="status-label">Status atual</div>
+          <div class="status-value" id="status-value">—</div>
+          <div class="status-sub" id="status-sub"></div>
+        </div>
+      </div>
+
+      <div class="card" id="friends-section">
+        <div class="card-head" style="padding-bottom:10px;">
+          <div class="card-eyebrow">Seus amigos</div>
+          <h2 class="card-title" style="font-size:17px;">Ativos no grupo</h2>
+        </div>
+        <div id="friends-list"></div>
+
+        <div class="info-card" id="margem-card" style="display:none;">
+          <div>
+            <div class="info-title">Margem de segurança</div>
+            <div class="info-sub" id="margem-sub"></div>
+          </div>
+          <div class="info-badge" id="margem-badge">
+            <span></span>
+            <small>reserva</small>
+          </div>
+        </div>
+        <div style="height:16px;"></div>
+      </div>
+
+      <button class="btn" id="btn-compartilhar">Chamar um amigo</button>
+      <div id="compartilhar-form" style="display:none;">
+        <div class="field" style="padding:0; margin-bottom:10px;">
+          <label for="compartilhar-telefone">WhatsApp do amigo</label>
+          <input id="compartilhar-telefone" type="tel" placeholder="(21) 99999-9999" autocomplete="off" />
+        </div>
+        <button class="btn" id="btn-compartilhar-confirmar" style="background:#25D366; border-color:#25D366; color:#06170e;">📲 Chamar no WhatsApp</button>
+      </div>
+      <button class="btn ghost" id="btn-ver-link">Ver meu link</button>
+
+      <p class="footer-note">GRUPINHO · programa de fidelidade com indicação</p>
+    </div>
+
+    <!-- TELA DE PERFIL (aba) -->
+    <div id="perfil-view" style="display:none;">
+      <div class="topbar">
+        <div class="brand">
+          <span class="brand-mark">GRP</span>
+          <span class="brand-name">Perfil</span>
+        </div>
+      </div>
+      <div class="card card-pad">
+        <div class="client-summary" style="padding:0 0 16px;">
+          <div class="client-avatar" id="perfil-avatar">?</div>
+          <div class="client-info">
+            <div class="client-name" id="perfil-nome">—</div>
+            <div class="client-phone" id="perfil-telefone">—</div>
+          </div>
+        </div>
+        <button class="btn danger" id="btn-sair">Sair da conta</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar" id="tabbar" style="display:none;">
+    <button class="tab active" data-tab="home">
+      <span>🏠</span>Início
+    </button>
+    <button class="tab" data-tab="friends">
+      <span>👥</span>Amigos
+    </button>
+    <button class="tab" data-tab="perfil">
+      <span>👤</span>Perfil
+    </button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/app-cliente.js"></script>
+</body>
+</html>
